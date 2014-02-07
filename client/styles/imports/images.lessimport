@@ -1,0 +1,13 @@
+/*
+	image smooth load mixin
+	each img with class 'load' is hidden by default
+	when event 'onload' occurs, it becomes '.loaded'
+*/
+@load-fade-time : 150ms;
+img.load {
+    opacity: 0;
+    .transition(opacity @load-fade-time);
+    &.loaded {
+        opacity: 1;
+    }
+}

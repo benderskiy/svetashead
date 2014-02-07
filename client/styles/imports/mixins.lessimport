@@ -1,0 +1,26 @@
+.clearfix {
+    zoom : 1;
+    &:before, &:after {
+        content:"";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+.pull-left {
+    float: left;
+}
+.pull-right {
+    float: right;
+}
+.pull-center {
+    margin: 0 auto;
+}
+.pull-center-force {
+    display: table;
+    margin: 0 auto;
+}
+.no-display {
+    display: none;
+}
