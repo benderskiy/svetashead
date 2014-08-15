@@ -1,0 +1,12 @@
+<template name="gallery">
+    <div class="gallery">
+        <div class="block-wrapper">
+            {{#each images}}
+                <div class="block">
+                    <img src="{{url}}" title="{{title}}" alt="{{title}}" />
+                    <div class="delete-button">Удалить</div>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</template>

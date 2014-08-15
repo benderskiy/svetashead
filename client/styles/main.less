@@ -1,7 +1,8 @@
-@import "imports/variables.lessimport";
-@import "imports/prefixer.lessimport";
-@import "imports/mixins.lessimport";
-@import "imports/images.lessimport";
+@import "imports/normalize.import.less";
+@import "imports/variables.import.less";
+@import "imports/prefixer.import.less";
+@import "imports/mixins.import.less";
+@import "imports/images.import.less";
 
 * {
     box-sizing: border-box;
@@ -10,9 +11,18 @@
 a { 
     color: inherit;
     text-decoration: none;
-} 
+}
+
+textarea {
+    resize: vertical;
+}
+
+button {
+    font-size: 75%;
+}
 
 html, body {
+    -webkit-tap-highlight-color:transparent;
     padding: 0;
     margin: 0;
     height: 100%;
@@ -21,6 +31,12 @@ html, body {
 
 body {
     overflow-y: scroll;
+    &.no-scroll {
+        overflow: hidden;
+        .paper {
+
+        }
+    }
     font-family: @font-roboto-condenced;
     background: @html-bg;
     font-size: 16px;
@@ -39,12 +55,10 @@ body {
     position: relative;
     overflow: hidden;
     background: @paper-bg;
-    width: 1000px;
+    max-width: 1000px;
+    width: 100%;
     min-height: 100%;
     margin: 0 auto;
-    @media only screen and (max-width: 1000px) {
-        width: 100%;
-    }
     
     #fix-arrow {
         display: none;
@@ -86,6 +100,207 @@ body {
     }    
 }
 
-@import "header.lessimport";
-@import "pages.lessimport";
-@import "portfolio-page.lessimport";
+.modal-window {
+    display: none;
+    &.opened {
+        display: block;
+    }
+    .user-select(none);
+    font-family: @font-roboto;
+    position: fixed;
+    width: 25em;
+    left: 50%;
+    margin-left: -12.5em;
+    top: 20%;
+    background: white;
+    z-index: 9999;
+    border: 1px solid #CCC;
+    .header {
+        cursor: default;
+        padding: 0.2em 0.5em;
+        font-size: 150%;
+        border-bottom: 1px solid #EEE;
+    
+        @modal-cross-size: 1.25rem;
+        .cross {
+            position: absolute;
+            cursor: pointer;
+            right: -@modal-cross-size/2;
+            top: -@modal-cross-size/2;
+            width: @modal-cross-size;
+            height: @modal-cross-size;
+            background: #CCC;
+            .border-radius(@modal-cross-size);
+            &:hover {
+                background: #BBB;
+            }
+
+            &:before,&:after {
+                content: '';
+                display: block;
+                position: absolute;
+                right: 15%;
+                top: 50%;
+                .rotate(45deg);
+                width: 70%;
+                height: 1px;
+                background: white;
+            }
+            &:before {
+                .rotate(45deg);
+            }
+            &:after {
+                .rotate(135deg);
+            }
+        }
+    }
+    .modal-content{
+        cursor: default;
+        padding: 2em 3em;
+        .image-wrap {
+            width: 100%;
+            text-align: center;
+            padding: 1em;
+            img {
+                max-width: 15em;
+                max-height: 15em;
+            }
+        }
+    }
+    .footer {
+        display: none;
+        &.visible {
+            display: block;
+        }
+        padding: 0.2em 0.5em 0.5em;
+        text-align: right;
+    }
+}
+
+.fullscreen-frame {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+    z-index: 999;
+    text-align: center;
+    background: #000;
+    overflow-y: scroll;
+
+
+    @fs-cross-size: 2rem;
+    .cross {
+        position: fixed;
+        cursor: pointer;
+        right: 2rem;
+        top: 1rem;
+        width: @fs-cross-size;
+        height: @fs-cross-size;
+        border: 1px solid white;
+        background: rgba(0, 0, 0, 0.2);
+        opacity: 0.5;
+        &:hover {
+            opacity: 0.7;
+        }
+        .border-radius(@fs-cross-size);
+
+        &:before,&:after {
+            content: '';
+            display: block;
+            position: absolute;
+            right: 15%;
+            top: 50%;
+            .rotate(45deg);
+            width: 70%;
+            height: 1px;
+            background: white;
+        }
+        &:before {
+            .rotate(45deg);
+        }
+        &:after {
+            .rotate(135deg);
+        }
+    }
+
+    @fs-arrow-size: 3em;
+    .arrow-left, .arrow-right {
+        color: white;
+        position: absolute;
+        font-size: 2em;
+        font-family: 'Times New Roman', serif;
+        font-weight: 100;
+        top: 50%;
+        margin-top: -@fs-arrow-size/2;
+        line-height: @fs-arrow-size;
+        border-radius: 1em;
+        height: @fs-arrow-size;
+        width: @fs-arrow-size;
+
+        cursor: pointer;
+        
+        &:hover {
+            span {
+                display: block;
+            }
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        // display: none;
+        // &.active {
+        //     display: block;
+        // }
+    }
+    .arrow-left {
+        left: 0;
+    }
+    .arrow-right {
+        right: 0;
+    }
+
+    &.active {
+        display: block;
+    }
+    
+    .fs-content {
+        height: 100%;
+        cursor: pointer;
+        span {
+            vertical-align: middle;
+            height: 100%;
+            display: inline-block;
+        }
+        img {
+            vertical-align: middle;
+            max-width: 100%;
+            max-height: 100%;
+            cursor: url(/cursor/zoom-out.cur), default;
+            cursor: -webkit-zoom-out;
+            cursor: -moz-zoom-out;
+        }
+    }
+
+    .scroll-hack {
+        height: 1px;
+    }
+
+}
+
+.ref-button {
+    display: block;
+    font-family: @font-roboto-condenced;
+    color: white;
+    cursor: pointer;
+    font-size: 0.8em;
+    line-height: 1.5em;
+    padding: 0px 5px;
+    background: @c_persian_green;
+    border-radius: 5px;
+}
+
+@import "header.import.less";
+@import "pages.import.less";
+@import "portfolio-entry.import.less";
+@import "controls.import.less";

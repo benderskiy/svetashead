@@ -1,0 +1,62 @@
+<template name="edit-entry">
+    <div class='post-entry'>
+        <form class="control-container">
+            <h3 >
+                Редактирование записи в портфолио
+            </h3>
+
+            <div class="control">
+                <label>Категория</label>
+                <select id='select-category' required>
+                    <option selected>{{category}}</option>
+                    {{#each categorys}}
+                        <option>{{title}}</option>
+                    {{/each}}
+                </select>
+            </div>
+
+            <div class="control">
+                <label>Ссылка (латиницей без пробелов)</label>
+                <input id='input-post-url' required type="text" placeholder="post-name" value='{{url}}' />
+            </div>
+
+            <div class="control">
+                <span class='hint'>Ссылка на запись будет выглядить так:</span><br>
+                <span class='hint blue' id='span-link'></span>
+            </div>
+
+            <div class="control">
+                <label>Квадратная картинка</label>
+                <div class="entry-image">
+                    {{> imageInput}}
+                </div>
+            </div>
+
+            <div class="control">
+                <label>Название</label>
+                <textarea id='input-post-header' required rows="2">{{headerText}}</textarea>
+            </div>
+
+            <div class="control">
+                <label>Описание</label>
+                <textarea id='input-post-descr' required rows="5">{{{description}}}</textarea>
+            </div>
+
+            <div class="control">
+                <label>Содержимое</label>
+                <div class="content-image no-preview">
+                    {{> imageInput}}
+                </div>
+                <textarea id='input-post-content' required rows="5">{{{content}}}</textarea>
+                <div class="text-center loader">
+                    <img src="/images/loading.gif" alt="">
+                </div>
+            </div>
+
+            <div class="control">
+                <button type='submit'>Сохранить</button>
+                <button class='red pull-right delete-post' type='button'>Удалить</button>
+            </div>
+        </form>
+    </div>
+</template>

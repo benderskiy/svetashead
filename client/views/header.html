@@ -1,0 +1,58 @@
+<template name="header">
+    {{#if currentUser}}
+        <div class="admin-panel">
+            <a href="/post-blog">Написать в блоге</a>
+            <a href="/post-entry">Добавить в портфолио</a>
+            <a href="/gallery">Просмотреть галерею</a>
+            <a id='a-logout' href="/">Выйти</a>
+        </div>
+    {{/if}}
+
+    <a href="/" class="header-logo"></a>
+    
+    <div class="header-menu">
+        
+        <div class="header-divider arrow-left"></div>
+        
+        <div class='header-link about'>
+            <a href="/about">ABOUT</a>
+        </div>
+        
+        <div class="header-divider arrow-center"></div>
+        
+        <div class='header-link portfolio'>
+            <a href="/portfolio">PORTFOLIO</a>
+
+            <div class="header-link-dropdown">
+                {{#if category.length}}
+                    {{#each category}}
+                        <a class="header-dd-link" href="/portfolio/{{url}}">
+                            {{title}}
+                        </a>
+                    {{/each}}
+                {{else}}
+                    <div class="text-center">
+                        <img src="/images/loading.gif" alt="">
+                    </div>
+                {{/if}}
+                <a class="header-dd-link" href="/portfolio/all">
+                    all
+                </a>
+            </div>
+        </div>
+        
+        <div class="header-divider arrow-center"></div>
+        
+        <div class='header-link blog'>
+            <a href="/blog">BLOG</a>
+        </div>
+        
+        <div class="header-divider arrow-center"></div>
+        
+        <div class='header-link contacts'>
+            <a href="/contacts">CONTACTS</a>
+        </div>
+        
+        <div class="header-divider arrow-right"></div>
+    </div>
+</template>

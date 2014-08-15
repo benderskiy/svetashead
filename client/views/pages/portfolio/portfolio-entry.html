@@ -1,0 +1,51 @@
+<template name="portfolio-entry">
+    <div class='portfolio-entry'>
+
+        <div class="entry-header">
+            {{#if currentUser}}
+                <a href='/portfolio/{{categoryURL}}/{{url}}/edit' class="ref-button edit-post">
+                    Редактировать
+                </a>
+            {{/if}}
+            
+            <div class="rope-top">
+                <img class='img-big' src="/images/rope-top.png" alt="">
+                <img class='img-small' src="/images/rope-top-small.png" alt="">
+            </div>
+
+            <div class="quote-mark-left"></div>
+            <div class="quote-mark-right"></div>
+
+            <div class="entry-category">
+                {{category}}
+            </div>
+            <div class="entry-header-text">
+                {{{headerText}}}
+            </div>
+
+            <div class="rope-down">
+                <img class='img-big' src="/images/rope-down.png" alt="">
+                <img class='img-small' src="/images/rope-down-small.png" alt="">
+            </div>
+        </div>
+
+        <div class="entry-description">
+            {{{description}}}
+        </div>
+
+        <div class="entry-content">
+            {{#each content}}
+                {{#if src}}
+                    <img src="{{src}}" alt="">
+                {{/if}}
+                {{#if text}}
+                    <div class="sub-header">
+                        <span class="sub-header-text">
+                            {{text}}
+                        </span>
+                    </div>
+                {{/if}}
+            {{/each}}
+        </div>
+    </div>
+</template>

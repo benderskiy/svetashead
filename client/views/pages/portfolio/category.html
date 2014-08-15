@@ -1,0 +1,26 @@
+<template name="portfolio-category">
+    <div class="entry-previews">
+        <div class="category-header">
+            {{category}}
+        </div>
+        <div class="block-wrapper">
+            {{#if entries.length}}
+                {{#each entries}}
+                    <a href="/portfolio/{{categoryURL}}/{{url}}" class="block">
+                        {{#if currentUser}}
+                            <a href="/portfolio/{{categoryURL}}/{{url}}/edit" class="edit-button">Редактировать</a>
+                        {{/if}}
+                        <img src="{{image}}" alt="">
+                        <div class="entry-titel">
+                            {{{headerText}}}
+                        </div>
+                    </a>
+                {{/each}}
+            {{else}}
+                <div class="text-center">
+                    <img src="/images/loading.gif" alt="">
+                </div>
+            {{/if}}
+        </div>
+    </div>
+</template>

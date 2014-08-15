@@ -1,0 +1,39 @@
+{
+  "dependencies": {
+    "knox": {
+      "version": "0.8.9",
+      "dependencies": {
+        "mime": {
+          "version": "1.2.11"
+        },
+        "xml2js": {
+          "version": "0.2.8",
+          "dependencies": {
+            "sax": {
+              "version": "0.5.8"
+            }
+          }
+        },
+        "debug": {
+          "version": "0.7.4"
+        },
+        "stream-counter": {
+          "version": "0.1.0",
+          "dependencies": {
+            "readable-stream": {
+              "version": "1.0.26-2",
+              "dependencies": {
+                "string_decoder": {
+                  "version": "0.10.25-1"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "fibers": {
+      "version": "1.0.1"
+    }
+  }
+}

@@ -1,0 +1,107 @@
+.portfolio-entry {
+    .entry-header {
+        position: relative;
+        text-align: center;
+        margin-bottom: 1em;
+
+        .rope-top, .rope-down {
+            img {
+                width: 100%;
+                &.img-small {
+                    display: none;
+                }
+                @media only screen and (max-width: 520px) {
+                    display: none;
+                    &.img-small {
+                        display: block;
+                    }
+                }
+            }
+        }
+        .rope-top {
+            margin-bottom: 0.5em;
+        }
+        .rope-down {
+            margin-top: 1em;
+        }
+
+        .quote-mark-left, .quote-mark-right {
+            position: absolute;
+            top: 50%;
+            width: 59px;
+            height: 100px;
+            margin-top: -50px; 
+            background: transparent url('/images/quote-mark.png') 0 0 no-repeat;
+        }
+        
+        .quote-mark-left {
+            left: 0;
+        }
+        .quote-mark-right {
+            right: 0;
+            .rotate(180deg);
+        }
+
+        .entry-category {
+            margin: 0 60px;
+            font-size: 1.1em;
+            margin-bottom: 0.5em;
+            font-family: @font-roboto-condenced;
+            color: @c_svetasred;
+        }
+
+        .entry-header-text {
+            position: relative;
+            margin: 0 60px;
+            line-height: 1.2em;
+            min-height: 2em;
+            font-size: 1.9em;
+            font-weight: 400;
+            font-family: @font-roboto-slab;
+        }
+
+        .edit-post {
+            position: absolute;
+            top: -1.2em;
+            right: 1.9em;
+        }
+    }
+
+    .entry-description {
+        width: 90%;
+        margin: auto;
+        text-align: center;
+        font-family: @font-roboto-condenced;
+        font-style: italic;
+        color: @text-light;
+        margin-bottom: 1em;
+    }
+
+    
+    .entry-content {
+        .sub-header {
+            text-align: center;
+            position: relative;
+            margin-top: 2em;
+
+            &:before {
+                content: '';
+                display: block;
+                margin: 0 0.5em -0.8em;
+                border-bottom: 1px solid black;
+            }
+
+            .sub-header-text {
+                background: white;
+                padding: 0 20px;
+            }
+        }
+        
+        img {
+            width: 100%;
+            margin-top: 0.5em;
+            cursor: pointer;
+        }
+    }
+
+}

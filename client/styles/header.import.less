@@ -1,0 +1,167 @@
+header {    
+    font-weight: 300;
+    color: @text-light;
+
+    .user-select(none);
+    padding-top: 2em;
+    margin-bottom: 2em;
+    position: relative; 
+
+    .admin-panel {
+        position: absolute;
+        right: 5%;
+        a {
+            display: block;
+            &:hover {
+                color: @c_persian_green;
+            }
+        }
+    }
+    
+    @logo-size: 100px;
+    @logo-size-hover: 102px;
+    .header-logo {
+        display: block;
+        background: @c_svetasred url('/images/logo.png');
+        background-size: cover;
+        margin: 0 auto;
+        height: @logo-size;
+        width: @logo-size;
+        border-radius: @logo-size;
+        cursor: pointer;
+        
+        &:hover {
+            height: @logo-size-hover;
+            width: @logo-size-hover;
+            border-radius: @logo-size-hover;
+            margin-top: -(@logo-size-hover - @logo-size)/2;
+            margin-bottom: -(@logo-size-hover - @logo-size)/2;
+        }
+    }
+    
+    .header-menu {
+        margin: 0 auto;
+        display: table;
+        margin-top: 2em;
+
+        .arrow-left, .arrow-center, .arrow-right {
+            height: 1.4em;
+            float: left;
+            .transform-origin(center, top);
+            @media only screen and (max-width: 760px) {
+                .scale(0.875);
+            }
+            @media only screen and (max-width: 360px) {
+                .scale(0.75);
+            } 
+        }
+        .arrow-left {
+            width: 63px;
+            background: white url('/images/arrow.png') 0 0 no-repeat;
+            background-position: 0 50%;
+        }
+        .arrow-center {
+            width: 39px;
+            background: white url('/images/arrow.png') 0 0 no-repeat;
+            background-position: -62px 50%;
+        }
+        .arrow-right {
+            width: 51px;
+            background: white url('/images/arrow.png') 0 0 no-repeat;
+            background-position: -69px 50%;
+        }
+        
+        .header-divider {
+            @media only screen and (max-width: 540px) {
+                display: none;
+            }
+        }
+        
+        .header-link {
+            float: left;
+            
+            margin: 0 0.3em;    
+            @media only screen and (max-width: 540px) {
+                margin: 0 1em;
+                &:nth-child(2) {
+                    margin-left: 0;
+                }
+                &:nth-last-child(2) {
+                    margin-right: 0;
+                }
+            }
+            font-size: 1.1em;
+            margin-top: -1px;
+
+            @triangle-size: 5px;
+            margin-top: -@triangle-size;
+            &:before {
+                content: '';
+                display: block;
+                margin: 0 auto;
+                margin-top: -@triangle-size - 1px;
+                width: 0;
+                height: @triangle-size; 
+                border-left: @triangle-size solid transparent;
+                border-right: @triangle-size solid transparent;
+                border-bottom: @triangle-size solid @text-light;
+                opacity: 0;
+            }
+            &.about {&:before { border-bottom-color: @c_mustard; } }
+            &.portfolio {&:before { border-bottom-color: @c_claret; } }
+            &.blog {&:before { border-bottom-color: @c_apricot; } }
+            &.contacts {&:before { border-bottom-color: @c_pink_rose; } }
+            
+            &:hover {
+                &:before {
+                    opacity: 1;
+                }
+            }
+            &.active {
+                color: @c_persian_green;
+                &:before {
+                    opacity: 1;
+                    border-bottom: @triangle-size solid @c_persian_green;
+                }
+            }        
+            
+            @padding-l: 0.2em;
+            .header-link-dropdown {
+                z-index: 10;
+                display: none;
+                position: absolute;
+                margin-left: -@padding-l;
+                padding-top: @padding-l;
+                
+                .header-dd-link {
+                    display: block;
+                    min-width: 6em;
+                    opacity: 0.6;
+                    &:hover {
+                        opacity: 1;
+                    }
+
+                    font-size: 0.8em;
+                    line-height: 1.4em;
+                    font-style: italic;
+                    text-transform: uppercase;
+                    background: white;
+                    padding: @padding-l 1em 1px @padding-l;
+                    border-bottom: 2px solid white;
+                    
+                    &:nth-child(1) { border-color: @c_pink_rose; }
+                    &:nth-child(2) { border-color: @c_elf_green; }
+                    &:nth-child(3) { border-color: @c_putty; }
+
+                }
+                
+            }
+            
+            &:hover {
+                .header-link-dropdown {
+                    display: block;
+                }
+            }
+        }
+    }
+}

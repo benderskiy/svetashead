@@ -5,7 +5,10 @@
 
 standard-app-packages
 autopublish
-insecure
-preserve-inputs
 less
 iron-router
+handlebars
+accounts-ui
+accounts-password
+npm
+blaze-layout

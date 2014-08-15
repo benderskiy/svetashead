@@ -1,0 +1,37 @@
+<template name="portfolio">
+    <div class="portfolio">
+        {{#if category.length}}
+            {{#each category}}
+                <div class="category">
+                    {{#if currentUser}}
+                        <a href='/category/edit/{{url}}' class="ref-button edit-button">
+                            Редактировать
+                        </a>
+                    {{/if}}
+                    <a href="/portfolio/{{url}}">    
+                        <div class="block">
+                            <div class="block-header">
+                                {{title}}
+                            </div>
+                            <img src="{{image}}" alt="">
+                        </div>
+                    </a>
+                </div>
+            {{/each}}
+            <div class="category">
+                <a href="/portfolio/all">    
+                    <div class="block">
+                        <div class="block-header">
+                            all
+                        </div>
+                        <img src="{{image}}" alt="">
+                    </div>
+                </a>
+            </div>
+        {{else}}
+            <div class="text-center">
+                <img src="/images/loading.gif" alt="">
+            </div>
+        {{/if}}
+    </div>
+</template>

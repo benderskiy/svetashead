@@ -1,0 +1,16 @@
+<template name="layout">
+	<div id="paper" class="paper">
+		<header>
+	        {{> header}}
+    	</header>
+    	<!-- CONTENT FROM ROUTERS -->
+    	<div class='content'>
+    		{{> yield}}
+		</div>
+	</div>
+
+    <!-- Fixed fullscreen container for images or smthng -->
+    {{> fullscreenFrame}}
+    <!-- Modal window -->
+    {{> modalWindow}}
+</template>
